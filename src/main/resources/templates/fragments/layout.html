@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout(title, content)" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${title}">Page</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a th:href="@{/static}">Home</a> |
+            <a th:href="@{/products}">Products</a> |
+            <a th:href="@{/cart}">Cart</a> |
+            <a th:href="@{/about}">About</a> |
+            <a th:href="@{/login}">Login</a>
+        </nav>
+        <hr>
+    </header>
+
+    <main th:replace="${content}"></main>
+
+
+    <hr>
+
+    <footer>
+        <small>
+            ecommerce-SpringMVC-Thymeleaf
+        </small>
+    </footer>
+
+</body>
+</html>
