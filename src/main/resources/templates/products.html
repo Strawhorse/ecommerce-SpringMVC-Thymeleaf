@@ -8,13 +8,19 @@
     <div class="now"></div>
     <div class="col-md-4 mb-4" th:each="product : ${products}">
         <div class="card h-100">
-            <img th:src="${product.imageUrl}" class="card-img-top" alt="Product image">
+            <img th:src="@{${product.imageUrl}}" class="card-img-top" alt="Product image">
             <div class="card-body d-flex flex-column">
-                <h5 class="card-title" th:text="${product.name}"></h5>
+                <h5 class="card-title">
+                    <a th:href="@{/products/{id}(id=${product.id})}" th:text="${product.name}"></a>
+                </h5>
+                <h5 class="card-title"></h5>
                 <p class="card-text" th:text="${product.description}"></p>
                 <div class="mt-auto">
                     <p class="fw-bold">€ <span th:text="${product.price}"></span></p>
-                    <a class="btn btn-primary w-100">View Details</a>
+                    <a class="btn btn-primary"
+                       th:href="@{/products/{id}(id=${product.id})}">
+                        View
+                    </a>
                 </div>
             </div>
         </div>
