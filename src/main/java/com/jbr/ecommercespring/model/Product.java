@@ -1,10 +1,10 @@
 package com.jbr.ecommercespring.model;
-
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "products")
-public class Product{
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,42 +17,23 @@ public class Product{
     private String description;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private double price;
+    private BigDecimal price;
 
-
+    @Column(name = "image_url")
     private String imageUrl;
 
-    public Product(Long id, String name, String description, double price, String imageUrl) {
-        this.id = id;
+    protected Product() { } // <-- REQUIRED for JPA
+
+    public Product(String name, String description, BigDecimal price, String imageUrl) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.imageUrl = imageUrl;
     }
 
-    public Product() {
-        // JPA needs a no-args constructor
-    }
-
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
+    public Long getId() { return id; }
+    public String getName() { return name; }
+    public String getDescription() { return description; }
+    public BigDecimal getPrice() { return price; }
+    public String getImageUrl() { return imageUrl; }
 }

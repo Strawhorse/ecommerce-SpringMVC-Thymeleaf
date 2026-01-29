@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -25,9 +26,9 @@ public class PageController {
     public String products(Model model) {
 
         List<Product> products = List.of(
-                new Product(1L, "Laptop", "Powerful and yet portable", 999.99, "https://via.placeholder.com/300"),
-                new Product(1L, "Headphones", "Insert text here", 99.99, "https://via.placeholder.com/300"),
-                new Product(1L, "Smartphone", "Insert text here", 299.99, "https://via.placeholder.com/300")
+                new Product("1L", "Laptop", new BigDecimal("999.99"), "https://via.placeholder.com/300"),
+                new Product("1L", "Headphones", new BigDecimal("99.99"), "https://via.placeholder.com/300"),
+                new Product("1L", "Smartphone",new BigDecimal("299.99"), "https://via.placeholder.com/300")
         );
 
         model.addAttribute("products", products);
